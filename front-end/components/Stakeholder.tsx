@@ -55,30 +55,7 @@ export function  Stakeholder () {
         }
       };
       
-    // const registerStakeholder = async () => {
-    //   if (typeof window !== 'undefined' && window.ethereum) {
-    //     const provider = new ethers.providers.Web3Provider(window.ethereum as any);
-    //     const signer = provider.getSigner();
-    //     const bal = await signer.getAddress();
-    //     const VestingContract = new ethers.Contract(
-    //       contractAddress,
-    //       contractABI,
-    //       signer
-    //     );
-    
-    //     try {
-    //       const stakeHolderRegistration = await VestingContract.addStakeholder(
-    //         beneficiaryAddress,
-    //         amount,
-    //         vestingPeriod,
-    //         stakeholderType
-    //       );
-    //       console.log('Registration Done');
-    //     } catch (e) {
-    //       console.log(e);
-    //     }
-    //   }
-    // };
+   
 
     return (
         <div className='container-fluid'>
