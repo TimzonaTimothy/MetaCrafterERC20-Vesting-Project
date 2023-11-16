@@ -6,7 +6,7 @@ import { BigNumber, ethers } from "ethers";
 declare var window: any
 export function  Organisation () {
     const contractABI = myabi;
-    const contractAddress = "0x2f41a02cb0E8F9AD4605A7aAbc06760971ae23f7";
+    const contractAddress = "0x93723624D8d63378b3Aa22C86d7deaa821341edB";
     const [name, setName] = useState('');
     const [symbol, setSymbol] = useState('');
     const [orgAddress, setOrgAddress] = useState('');
@@ -16,52 +16,29 @@ export function  Organisation () {
 
     
     
-  try {
+  // try {
     
-        const getBalance = async () => {
-          if (typeof window !== 'undefined' && window.ethereum) {
-            const provider = new ethers.providers.Web3Provider(window.ethereum as any);
-            const signer = provider.getSigner();
-            const bal = await signer.getAddress();
-            const VestingContract = new ethers.Contract(
-              contractAddress,
-              contractABI,
-              signer
-            );
+  //       const getBalance = async () => {
+  //         if (typeof window !== 'undefined' && window.ethereum) {
+  //           const provider = new ethers.providers.Web3Provider(window.ethereum as any);
+  //           const signer = provider.getSigner();
+  //           const bal = await signer.getAddress();
+  //           const VestingContract = new ethers.Contract(
+  //             contractAddress,
+  //             contractABI,
+  //             signer
+  //           );
       
-            const balance = await VestingContract.balanceOf(String(bal));
-            console.log('balance ', balance);
-          }
-        };
+  //           const balance = await VestingContract.balanceOf(String(bal));
+  //           console.log('balance ', balance);
+  //         }
+  //       };
       
-        getBalance();
+  //       getBalance();
       
-  } catch (error) {
-    console.error('Error:', error);
-  }
-
-//   try {
-//     useEffect(() => {
-//         const getBalance = async () => {
-//           if (typeof window !== 'undefined' && window.ethereum) {
-//             const provider = new ethers.providers.Web3Provider(window.ethereum as any);
-//             const signer = provider.getSigner();
-//             const VestingContract = new ethers.Contract(
-//               contractAddress,
-//               contractABI,
-//               signer
-//             );
-      
-//             const balance = await VestingContract.totalSupply();
-//             console.log('balance ', balance);
-//           }
-//         };
-
-//         getBalance();
-//       }, []); 
-//   } catch (error) {
-    //     console.error('Error:', error);
-    //   }
+  // } catch (error) {
+  //   console.error('Error:', error);
+  // }
     
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -118,7 +95,7 @@ export function  Organisation () {
                     id="symbol"
                     type="text"
                     placeholder="Enter Name"
-                    
+                    required
                     onChange={(e) => setName(e.target.value)}
                     />
                 </div>
@@ -131,7 +108,7 @@ export function  Organisation () {
                     id="symbol"
                     type="text"
                     placeholder="Enter Org Symbol"
-                    
+                    required
                     onChange={(e) => setSymbol(e.target.value)}
                     />
                 </div>
@@ -144,7 +121,7 @@ export function  Organisation () {
                     id="orgAddress"
                     type="text"
                     placeholder="Org Wallet Address"
-                    
+                    required
                     onChange={(e) => setOrgAddress(e.target.value)}
                     />
                 </div>
@@ -157,7 +134,7 @@ export function  Organisation () {
                     id="tokenAddress"
                     type="text"
                     placeholder="Token Address"
-                    
+                    required
                     onChange={(e) => setTokenAddress(e.target.value)}
                     />
                 </div>

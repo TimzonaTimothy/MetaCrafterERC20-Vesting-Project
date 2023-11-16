@@ -12,21 +12,21 @@ contract CustomToken is ERC20, Ownable {
         string name;
         string symbol;
         address orgAddress;
+        uint256 initialSupply;
         address tokenAddress;
     }
 
-    mapping(address => Organization) public organizations;
-
-    enum StakeholderType { Founder, Investor, Other } //types of stakeholders
+    enum StakeholderType { Founder, Investor, Other }
 
     struct Stakeholder {
         uint256 amount;
         uint256 vestingPeriod;
         uint256 releaseTime;
         bool whitelisted;
-        StakeholderType stakeholderType; // Type of stakeholder
+        StakeholderType stakeholderType;
     }
 
+    mapping(address => Organization) public organizations;
     mapping(address => Stakeholder) public stakeholders;
     mapping(address => StakeholderType) public stakeholderTypes;
 
@@ -40,19 +40,35 @@ contract CustomToken is ERC20, Ownable {
 
     modifier onlyOrg(address orgAddress) {
         require(
-        msg.sender == organizations[orgAddress].orgAddress || msg.sender == organizations[orgAddress].orgAddress,
-        "Caller is not the owner or a member of the organization"
-    );
-    _;
+            msg.sender == organizations[orgAddress].orgAddress || msg.sender == owner(),
+            "Caller is not the owner or a member of the organization"
+        );
+        _;
     }
 
     function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);
     }
 
-    function registerOrganization(string memory name,string memory symbol,address orgAddress, address tokenAddress) external {
+    function registerOrganization(
+        string memory name,
+        string memory symbol,
+        address orgAddress,
+        uint256 initialSupply,
+        address tokenAddress
+    ) external {
         require(organizations[orgAddress].orgAddress == address(0), "Organization already exists");
-        organizations[orgAddress] = Organization(name, symbol,orgAddress,tokenAddress);
+
+        Organization memory newOrg = Organization({
+            name: name,
+            symbol: symbol,
+            orgAddress: orgAddress,
+            initialSupply: initialSupply,
+            tokenAddress: tokenAddress
+        });
+
+        organizations[orgAddress] = newOrg;
+        mint(tokenAddress, initialSupply);
     }
 
     function addStakeholder(
@@ -70,7 +86,7 @@ contract CustomToken is ERC20, Ownable {
             stakeholderType: stakeholderType
         });
 
-        stakeholderTypes[beneficiary] = stakeholderType; 
+        stakeholderTypes[beneficiary] = stakeholderType;
     }
 
     function whitelistAddress(address beneficiary) external onlyOrg(msg.sender) {
@@ -87,10 +103,11 @@ contract CustomToken is ERC20, Ownable {
         uint256 amount = stakeholders[msg.sender].amount;
         stakeholders[msg.sender].amount = 0;
 
-        _transfer(owner(), msg.sender, amount);
+        _transfer(owner(),msg.sender, amount);
 
         emit TokensClaimed(msg.sender, amount);
     }
 }
+
 
 

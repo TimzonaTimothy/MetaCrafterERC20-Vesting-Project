@@ -208,6 +208,7 @@
       { "internalType": "string", "name": "name", "type": "string" },
       { "internalType": "string", "name": "symbol", "type": "string" },
       { "internalType": "address", "name": "orgAddress", "type": "address" },
+      { "internalType": "uint256", "name": "initialSupply", "type": "uint256" },
       { "internalType": "address", "name": "tokenAddress", "type": "address" }
     ],
     "stateMutability": "view",
@@ -225,6 +226,7 @@
       { "internalType": "string", "name": "name", "type": "string" },
       { "internalType": "string", "name": "symbol", "type": "string" },
       { "internalType": "address", "name": "orgAddress", "type": "address" },
+      { "internalType": "uint256", "name": "initialSupply", "type": "uint256" },
       { "internalType": "address", "name": "tokenAddress", "type": "address" }
     ],
     "name": "registerOrganization",

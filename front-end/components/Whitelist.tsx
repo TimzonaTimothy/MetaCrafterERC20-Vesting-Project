@@ -3,6 +3,6 @@ import React from 'react';
 
 export function  Whitelist () {
     return (
-        <div>Whitelist child</div>
+        <div>Whitelist</div>
     );
 }
