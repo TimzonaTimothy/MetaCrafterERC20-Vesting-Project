@@ -10,7 +10,9 @@ This program is a simple contract written in Solidity, a programming language us
 Implemented The contract implements the following features: Function that allows an organization to register themselves and their token Function that allows an Organization to be able to mention the type of stakeholder and their vesting period. Function that Organization should be able to whitelist addresses for certain stakeholders (founders, investors etc.). Whitelisted addresses should be able to claim their tokens after the vesting period.
 
 ## Urls:
-https://vestingproject.vercel.app/
 
-Contract Addresses
+Front End link: https://vestingproject.vercel.app/
+
+Contract Addresse: 0x93723624D8d63378b3Aa22C86d7deaa821341edB
+
 TokenContract: https://mumbai.polygonscan.com/address/0x93723624D8d63378b3Aa22C86d7deaa821341edB
