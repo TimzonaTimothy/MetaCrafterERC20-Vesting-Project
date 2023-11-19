@@ -1,5 +1,5 @@
 import React from 'react';
-import { Organisation } from '../../components/organisations';
+import { Organisation } from '../../components/Organisations';
 const Page = () => {
     return (
         <div>
