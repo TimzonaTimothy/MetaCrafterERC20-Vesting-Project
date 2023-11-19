@@ -15,7 +15,7 @@ export function  Stakeholder () {
     console.log('Contract ABI:', contractABI);
 
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log('beneficiary Address:',beneficiaryAddress);
     console.log('amount:', amount);

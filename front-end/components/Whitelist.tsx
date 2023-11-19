@@ -11,7 +11,7 @@ export function Whitelist () {
     const contractAddress = "0x93723624D8d63378b3Aa22C86d7deaa821341edB";
 
 
-    const handleEligibility = async (e) => {
+    const handleEligibility = async (e: React.FormEvent) => {
         e.preventDefault();
         console.log('beneficiary Address:',address);
         
@@ -54,7 +54,7 @@ export function Whitelist () {
           };
 
 
-          const handleWithdrawal = async (e) => {
+          const handleWithdrawal = async (e: React.FormEvent) => {
             e.preventDefault();
             
             

@@ -15,32 +15,7 @@ export function  Organisation () {
     console.log('Contract ABI:', contractABI);
 
     
-    
-  // try {
-    
-  //       const getBalance = async () => {
-  //         if (typeof window !== 'undefined' && window.ethereum) {
-  //           const provider = new ethers.providers.Web3Provider(window.ethereum as any);
-  //           const signer = provider.getSigner();
-  //           const bal = await signer.getAddress();
-  //           const VestingContract = new ethers.Contract(
-  //             contractAddress,
-  //             contractABI,
-  //             signer
-  //           );
-      
-  //           const balance = await VestingContract.balanceOf(String(bal));
-  //           console.log('balance ', balance);
-  //         }
-  //       };
-      
-  //       getBalance();
-      
-  // } catch (error) {
-  //   console.error('Error:', error);
-  // }
-    
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         console.log('name:', name);
         console.log('symbol:', symbol);
